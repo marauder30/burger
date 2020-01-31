@@ -1,6 +1,6 @@
-const orm = require("../config/orm.js");
+let orm = require("../config/orm");
 
-var burger = {
+let burger = {
     all: function(cb) {
       orm.all("burgers", function(res) {
         cb(res);

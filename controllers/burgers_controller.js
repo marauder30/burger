@@ -1,7 +1,7 @@
-const express = require("express");
-const router = express.Router();
+let express = require("express");
+let router = express.Router();
 
-const burger = require("../models/burger.js");
+let burger = require("../models/burger.js");
 
 router.get("/", function(req, res) {
     burger.all(function(data) {
@@ -14,7 +14,7 @@ router.get("/", function(req, res) {
 });
 
 router.post("/api/burgers", function(req, res) {
-    burger.create(["name", "eaten"], [req.body.name, req.body.eaten], function(result) {
+    burger.create("name", req.body.name, function(result) {
       // Send back the ID of the new quote
       res.json({ id: result.insertId });
     });
@@ -26,7 +26,7 @@ router.put("/api/burgers/:id", function(req, res) {
     console.log("condition", condition);
   
     burger.update({
-      eaten: req.body.eaten
+      devoured: req.body.devoured
     }, condition, function(result) {
       if (result.changedRows == 0) {
         // If no rows were changed, then the ID must not exist, so 404

@@ -1,4 +1,4 @@
-const connection = require("./connection.js");
+let connection = require("./connection");
 
 function printQuestionMarks(num) {
     var arr = [];
