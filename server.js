@@ -1,17 +1,23 @@
 const express = require("express");
-// var orm = require("./config/orm.js");
 
-//  Find all the parties ordering by the lowest cost to the highest cost.
-// orm.selectAndOrder("party_name", "parties", "party_cost");
+const PORT = process.env.PORT || 8080;
 
-// orm.selectAndOrder("client_name", "clients", "id");
+const app = express();
 
-//  Find a party in the parties table by a party name of Cigar.
-// orm.selectWhere("parties", "party_name", "Cigar");
+app.use(express.static("public"));
 
-// orm.selectWhere("clients", "client_name", "Brianne");
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-//  Find the client who is attending the most parties.
-// orm.findWhoHasMost("client_name", "id", "clients", "parties");
+const exphbs = require("express-handlebars");
 
-// orm.findWhoHasMost("party_name", "id", "parties", "clients");
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
+const routes = require("./controllers/burgers_controller.js");
+
+app.use(routes);
+
+app.listen(PORT, function() {
+    console.log(`Server listening on: http://localhost: ${PORT}`);
+})
