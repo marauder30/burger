@@ -24,11 +24,14 @@ $(function() {
     $(".create-form").on("submit", function(event) {
       // Make sure to preventDefault on a submit event.
       event.preventDefault();
+
   
       var newBurger = {
-        name: $("#ca").val().trim(),
+        burger_name: $("#ca").val().trim(),
+        devoured: false
       };
   
+      console.log(newBurger);
       // Send the POST request.
       $.ajax("/api/burgers", {
         type: "POST",
@@ -42,14 +45,14 @@ $(function() {
       );
     });
   
-    // $(".delete-cat").on("click", function() {
-    //   let id = $(this).attr("data-id");
-    //   $.ajax(`/api/cats/${id}`, {
-    //     type: "DELETE"
-    //   }).then(function() {
-    //     console.log("Deleted cat!");
-    //     location.reload();
-    //   });
-    // });
+    $(".delete-cat").on("click", function() {
+      let id = $(this).attr("data-id");
+      $.ajax(`/api/cats/${id}`, {
+        type: "DELETE"
+      }).then(function() {
+        console.log("Deleted cat!");
+        location.reload();
+      });
+    });
 });
   
