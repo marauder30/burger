@@ -45,14 +45,5 @@ $(function() {
       );
     });
   
-    $(".delete-cat").on("click", function() {
-      let id = $(this).attr("data-id");
-      $.ajax(`/api/cats/${id}`, {
-        type: "DELETE"
-      }).then(function() {
-        console.log("Deleted cat!");
-        location.reload();
-      });
-    });
 });
   
