@@ -12,16 +12,14 @@ router.get("/", function(req, res) {
     });
 });
 
-router.post("/api/burgers", function(req, res) {
+router.post("/burgers/create", function(req, res) {
 
-    burger.create([
-      "burger_name", "devoured"
-     ], [
-       req.body.burger_name, req.body.devoured
-    ], function(result) {
+    burger.create(req.body.burger_name, function(result) {
       console.log(result);
       // Send back the ID of the new quote
-      res.json({ id: result.insertId });
+      // res.json({ id: result.insertId });
+
+      res.redirect("/");
     });
 });
 
@@ -42,15 +40,5 @@ router.put("/api/burgers/:id", function(req, res) {
     });
 });
 
-// router.delete("/api/burgers/:id", function(req, res) {
-//     let condition = `id = ${req.params.id}`;
-  
-//     burger.delete(condition, function(result) {
-//       if (!result.affectedRows) {
-//         return res.status(404).end();
-//       } 
-//       res.status(200).end(); 
-//     });
-// });
 
 module.exports = router;
