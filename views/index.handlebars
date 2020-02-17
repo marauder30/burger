@@ -1,31 +1,8 @@
 <h1>Eat-Da-Burger!</h1>
 <img src="/assets/img/burger.png">
 
-<container id="notEaten">
-<h2>Burgers that have not been eaten!</h2>
-
-<ul>
-  {{#each burgers}}
-    {{#unless devoured}}
-      {{> burgers/burger-block devoured=true}}
-    {{/unless}}
-  {{/each}}
-</ul>
-</container>
-
-<container id="eaten">
-<h2>Burgers that have been devoured!</h2>
-
-<ul>
-  {{#each burgers}}
-    {{#if devoured}}
-      {{> burgers/burger-block devoured=false}}
-    {{/if}}
-  {{/each}}
-</ul>
-</container>
-
-<h2>Add a Burger</h2>
+<div id="burgform">
+  <h2>Add a Burger</h2>
 <form class="create-form">
 
   <div class="form-group">
@@ -35,4 +12,38 @@
 
   <button type="submit">Add Burger</button>
 </form>
+</div>
+<div id="boxes">
+  <div id="column1">
 
+  <div id="column2">
+
+  </div>
+</div>
+
+<div style="width: 100%; display: table;">
+    <div style="display: table-row">
+        <div style="width: 50%; display: table-cell;" id="notEaten">
+                <h2>Burgers that have not been eaten!</h2>
+
+                <ul>
+                  {{#each burgers}}
+                    {{#unless devoured}}
+                      {{> burgers/burger-block devoured=true}}
+                    {{/unless}}
+                  {{/each}}
+                </ul>
+            </div>
+        </div>
+        <div style="display: table-cell;" id="eaten">
+                <h2>Burgers that have been devoured!</h2>
+
+                <ul>
+                  {{#each burgers}}
+                    {{#if devoured}}
+                      {{> burgers/burger-block devoured=false}}
+                    {{/if}}
+                  {{/each}}
+        </div>
+    </div>
+</div>

@@ -1,5 +1,5 @@
 * {
-    background: aqua;
+    background: blueviolet;
 }
 
 h1 {
@@ -22,3 +22,15 @@ img {
 #eaten {
     display: block;
 }
+
+#boxes {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+#column1 {
+    width: 50%;
+}
+
